@@ -1,0 +1,27 @@
+@PORT=7777
+@JWT=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiJodHRwOi8vbG9jYWxob3N0Ojc3NzciLCJhdWRpZW5jZSI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCIsInN1YmplY3QiOiIzIiwiaXNUd29GQUF1dGhlbnRpY2F0ZWQiOmZhbHNlLCJpYXQiOjE2NTg4MTI1MTcsImV4cCI6MTY1ODgxMzQxN30.l7HVY_cneQaN88GjFY9p-XIiwK1GMpKOg9Q9HtSkUIo
+
+GET http://localhost:{{PORT}}
+
+###
+POST http://localhost:{{PORT}}/auth/login
+content-type: application/json
+
+{
+    "username": "user1@123.com",
+    "password": "Aa1234567@",
+    "remember":true
+}
+
+###
+GET http://localhost:{{PORT}}/auth/token-info
+Authorization: Bearer {{JWT}}
+
+
+###
+GET http://localhost:{{PORT}}/users/3
+Authorization: Bearer {{JWT}}
+
+###
+GET http://localhost:{{PORT}}/users
+Authorization: Bearer {{JWT}}

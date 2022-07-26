@@ -11,6 +11,23 @@ import { EmailTemplateModule } from 'src/email-template/email-template.module';
 const mailConfig = config.get('mail');
 const queueConfig = config.get('queue');
 
+const production_transport = {
+  host: process.env.MAIL_HOST || mailConfig.host,
+  port: process.env.MAIL_PORT || mailConfig.port,
+  secure: mailConfig.secure,
+  ignoreTLS: mailConfig.ignoreTLS,
+  auth: {
+    user: process.env.MAIL_USER || mailConfig.user,
+    pass: process.env.MAIL_PASS || mailConfig.pass
+  }
+};
+
+const development_transport = {
+  host: 'localhost',
+  port: '1025',
+  auth: null
+};
+
 @Module({
   imports: [
     EmailTemplateModule,
@@ -29,16 +46,7 @@ const queueConfig = config.get('queue');
     }),
     MailerModule.forRootAsync({
       useFactory: () => ({
-        transport: {
-          host: process.env.MAIL_HOST || mailConfig.host,
-          port: process.env.MAIL_PORT || mailConfig.port,
-          secure: mailConfig.secure,
-          ignoreTLS: mailConfig.ignoreTLS,
-          auth: {
-            user: process.env.MAIL_USER || mailConfig.user,
-            pass: process.env.MAIL_PASS || mailConfig.pass
-          }
-        },
+        transport: development_transport,
         defaults: {
           from: `"${process.env.MAIL_FROM || mailConfig.from}" <${
             process.env.MAIL_FROM || mailConfig.fromMail
