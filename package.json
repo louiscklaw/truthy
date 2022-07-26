@@ -29,7 +29,8 @@
     "seed": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js seed -n src/config/ormconfig.ts",
     "precommit": "lint-staged && npm run lint && npm run test:unit && npm run test:e2e",
     "prepush": "npm run test:unit && npm run test:e2e",
-    "prepare": "husky install"
+    "install_husky": "husky install",
+    "docker_rebuild": "docker-compose kill && docker-compose up -d --force-recreate"
   },
   "dependencies": {
     "@aws-sdk/client-cloudwatch-logs": "^3.54.1",

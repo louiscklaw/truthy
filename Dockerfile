@@ -1,4 +1,4 @@
-FROM node:14-alpine As development
+FROM node:16-buster
 
 WORKDIR /usr/src/app
 
@@ -7,27 +7,28 @@ COPY package.json ./
 
 COPY yarn.lock ./
 
-RUN yarn install
+RUN yarn
 
 COPY . .
 
 RUN yarn build
 
-FROM node:14-alpine As production
 
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
+# FROM node:16-buster As production
 
-WORKDIR /usr/src/app
+# ARG NODE_ENV=production
+# ENV NODE_ENV=${NODE_ENV}
 
-COPY package.json ./
+# WORKDIR /usr/src/app
 
-COPY yarn.lock ./
+# COPY package.json ./
 
-RUN yarn install --production
+# COPY yarn.lock ./
 
-COPY . .
+# RUN yarn install --production
 
-COPY --from=development /usr/src/app/dist ./dist
+# COPY . .
+
+# COPY --from=development /usr/src/app/dist ./dist
 
 CMD ["node", "dist/main"]

@@ -1,5 +1,5 @@
 @PORT=7777
-@JWT=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiJodHRwOi8vbG9jYWxob3N0Ojc3NzciLCJhdWRpZW5jZSI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCIsInN1YmplY3QiOiIzIiwiaXNUd29GQUF1dGhlbnRpY2F0ZWQiOmZhbHNlLCJpYXQiOjE2NTg4MTI1MTcsImV4cCI6MTY1ODgxMzQxN30.l7HVY_cneQaN88GjFY9p-XIiwK1GMpKOg9Q9HtSkUIo
+@JWT=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiJodHRwOi8vbG9jYWxob3N0Ojc3NzciLCJhdWRpZW5jZSI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCIsInN1YmplY3QiOiIxIiwiaXNUd29GQUF1dGhlbnRpY2F0ZWQiOmZhbHNlLCJpYXQiOjE2NTg4MjMzMTMsImV4cCI6MTY1ODgyNDIxM30.5DZUtaR_gaUqdzsmGPgQGaBjnKuI-gYlkreFJf-1Ccc
 
 GET http://localhost:{{PORT}}
 
@@ -8,8 +8,8 @@ POST http://localhost:{{PORT}}/auth/login
 content-type: application/json
 
 {
-    "username": "user1@123.com",
-    "password": "Aa1234567@",
+    "username": "admin@truthy.com",
+    "password": "Truthy@123",
     "remember":true
 }
 
@@ -19,7 +19,7 @@ Authorization: Bearer {{JWT}}
 
 
 ###
-GET http://localhost:{{PORT}}/users/3
+GET http://localhost:{{PORT}}/users/1
 Authorization: Bearer {{JWT}}
 
 ###
