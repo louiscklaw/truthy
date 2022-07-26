@@ -30,7 +30,10 @@
     "precommit": "lint-staged && npm run lint && npm run test:unit && npm run test:e2e",
     "prepush": "npm run test:unit && npm run test:e2e",
     "install_husky": "husky install",
-    "docker_rebuild": "docker-compose kill && docker-compose up -d --force-recreate"
+    "docker_rebuild": "docker-compose kill && docker-compose up -d --force-recreate",
+    "gitSync": "git fetch --all && git stash && git pull --all && git stash pop",
+    "gitUpdate": "git add . && git commit -m \"update truthy-api,\" && yarn gitSync && git push"
+
   },
   "dependencies": {
     "@aws-sdk/client-cloudwatch-logs": "^3.54.1",
