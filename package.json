@@ -32,8 +32,8 @@
     "install_husky": "husky install",
     "docker_rebuild": "docker-compose kill && docker-compose up -d --force-recreate",
     "gitSync": "git fetch --all && git stash && git pull --all && git stash pop",
+    "db:diagram": "cross-env NODE_ENV=development ts-node ./node_modules/.bin/typeorm-uml src/common/setup/config/uml-diagram.config.ts -d ../../../../docs/db-diagram.svg -f svg --with-enum-values",
     "gitUpdate": "git add . && git commit -m \"update truthy-api,\" && yarn gitSync && git push"
-
   },
   "dependencies": {
     "@aws-sdk/client-cloudwatch-logs": "^3.54.1",
@@ -58,6 +58,7 @@
     "config": "^3.3.7",
     "cookie-parser": "^1.4.6",
     "coveralls": "^3.1.1",
+    "cross-env": "^7.0.3",
     "ioredis": "^4.28.5",
     "nest-winston": "^1.6.2",
     "nestjs-i18n": "^8.2.2",
@@ -74,7 +75,9 @@
     "rxjs": "^7.5.5",
     "swagger-ui-express": "^4.3.0",
     "typeorm": "^0.2.41",
+    "typeorm-naming-strategies": "^4.1.0",
     "typeorm-seeding": "^1.6.1",
+    "typeorm-uml": "^1.6.5",
     "ua-parser-js": "^1.0.2",
     "uuid": "^8.3.2",
     "winston": "^3.6.0",
